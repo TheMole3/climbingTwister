@@ -117,8 +117,10 @@
             randomize();
         }
     }
+    let clickedanywhere = false;
     onMount(() => {
-        document.addEventListener("keypress", (event) => {randomizeByKey(event)});
+        document.addEventListener("keypress", (event) => {randomizeByKey(event); clickedanywhere = true});
+        document.addEventListener("mousedown", () => {clickedanywhere = true})
     })
 
     let randomize = () => {
@@ -286,6 +288,9 @@
         </section>
         <!-- Color part -->
         <section  class="z-10 w-full h-3/6 bottom duration-300 transition-colors bg-{colorMap[currentColorI]}"> 
+            {#if !clickedanywhere}
+                <span transition:fade={{ delay: 0, duration: 400 }} class="font-light relative top-20 animate-pulse text-lg">- Press anywhere to spin -</span>
+            {/if}
         </section>
     </button>
 
