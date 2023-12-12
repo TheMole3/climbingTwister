@@ -41,7 +41,6 @@
     })
 
     let playSound = async (handfeetI, colorI) => {
-        console.log($muted)
         if($swooshEnabled) whooshAudio.play();
         if($muted) return;
 
