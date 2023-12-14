@@ -11,8 +11,6 @@
     let settingsOpen = false;
 
 
-
-
     /* Audio map
         0: Right hand
         1: Left hand
@@ -130,15 +128,16 @@
         let newColorI = Math.floor(Math.random()*5);
         // Prevent to much repetition
         if(previousColors[0] == previousColors[1] == newColorI) return randomize();
-        previousColors.unshift(newColorI)
-        previousColors = previousColors.slice(0,2)
+        
+
+        // reduce chance for air
+        if(newColorI == 4 && Math.random()>0.2) return randomize();
 
         // Generate hand feet
         let newHandFeetI = Math.floor(Math.random()*4);
          // Prevent to much repetition
         if(previousHandfeet[0] == previousHandfeet[1] == newHandFeetI) return randomize();
-        previousHandfeet.unshift(newHandFeetI)
-        previousHandfeet = previousHandfeet.slice(0,2)
+        
 
         // If air is deactivated and it picked air, reroll
         if(!$airEnabled && newColorI == 4) return randomize();
@@ -151,6 +150,12 @@
 
         randomUpdated = !randomUpdated
         playSound(currentHandfeetI, currentColorI)
+
+        // Add to prevention arrays
+        previousHandfeet.unshift(newHandFeetI)
+        previousHandfeet = previousHandfeet.slice(0,2)
+        previousColors.unshift(newColorI)
+        previousColors = previousColors.slice(0,2)
     }
 
     
