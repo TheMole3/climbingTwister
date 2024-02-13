@@ -1,4 +1,4 @@
-#Climbing Twister
+# Climbing Twister
 A webapp for playing twister!
 
 This was made for playing on a climbing wall and has both auto spin and text to speach.
