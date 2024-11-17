@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import typography from "@tailwindcss/typography"
+import daisyui from 'daisyui'
+
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   safelist: [
@@ -22,7 +25,7 @@ export default {
       }
     }
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [typography, daisyui],
   daisyui: {
     themes: ["pastel"],
   },
