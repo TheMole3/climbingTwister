@@ -1,8 +1,7 @@
-# Use joseluisq/static-web-server to serve the static files
-FROM nginx
+FROM nginx:alpine
 
 # Copy files from the build stage
-COPY build /var/share/nginx/html
+COPY build /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 80
